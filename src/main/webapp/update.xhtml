@@ -1,0 +1,68 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+		<h:outputStylesheet library="css" name="fontawesome.css"></h:outputStylesheet>
+</h:head>
+<h:body>
+	<p:dialog header="Update Employee" widgetVar="UpdateEmployee">
+		<h:form id="updateform">
+			<h2 align="center">Update Form</h2>
+			<p:panelGrid styleClass="updatePageGrid" id="grid" columns="1">
+
+
+				<p:outputLabel for="name" value="Name:" />
+				<p:inputText id="name" value="#{webHandler.employee.name}" size="20"
+					required="true" label="name" requiredMessage="Name is required"
+					validatorMessage="Please enter a valid name.">
+					<f:validateRegex pattern="^[A-Za-z\s]{1,}[A-Za-z\s]{0,}$" />
+					<p:ajax event="change" update="namemsg"></p:ajax>
+				</p:inputText>
+				<h:message id="namemsg" for="name" style="color:red" />
+
+				<p:outputLabel for="age" value="Age:" />
+				<p:inputText id="age" value="#{webHandler.employee.age}" size="20"
+					required="true" label="age" requiredMessage="Age is required"
+					converterMessage="Age must be a number."
+					validatorMessage="Age must be btween 18 and 45.">
+					<f:validateLongRange minimum="18" maximum="45" />
+					<p:ajax event="change" update="agemsg"></p:ajax>
+				</p:inputText>
+				<h:message id="agemsg" for="age" style="color:red" />
+
+				<p:outputLabel for="email" value="Email:" />
+				<p:inputText id="email" value="#{webHandler.employee.email}"
+					size="20" required="true" label="email"
+					requiredMessage="Email is requied"
+					validatorMessage="Email is invalid.">
+					<f:validateRegex
+						pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,6})$" />
+					<p:ajax event="change" update="emailmsg"></p:ajax>
+				</p:inputText>
+				<h:message id="emailmsg" for="email" style="color:red" />
+
+				<p:outputLabel for="department" value="" />
+				<p:selectOneMenu id="department" value="#{webHandler.id}"
+					valueChangeListener="#{webHandler.changeDepartment}">
+					<f:selectItems value="#{webHandler.departmentList}" var="_dept"
+						itemValue="#{_dept.id}" itemLabel="#{_dept.name}" />
+				</p:selectOneMenu>
+				<h:message for="department" style="color:red" />
+
+				<p:commandButton value="Back" icon="fa fa-arrow-left" action="index" />
+				<p:commandButton value="Update" icon="fa fa-edit"
+					action="#{webHandler.updateEmployeeFromPage()}"
+					update="updateform :listOfEmp"
+					onclick="if(!confirm('Are you sure you want to update this data?')) {return false;}" />
+			</p:panelGrid>
+		</h:form>
+	</p:dialog>
+</h:body>
+
+</html> -->
